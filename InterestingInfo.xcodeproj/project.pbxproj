@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07D09C7F21E6E28A00C262C6 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C7E21E6E28A00C262C6 /* InfoTableViewController.swift */; };
+		07D09C8021E6E28A00C262C6 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C7E21E6E28A00C262C6 /* InfoTableViewController.swift */; };
+		07D09C8121E6E28A00C262C6 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C7E21E6E28A00C262C6 /* InfoTableViewController.swift */; };
+		07D09C9421E70A7800C262C6 /* TouchNodeBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9321E70A7800C262C6 /* TouchNodeBundle.swift */; };
+		07D09C9521E70A7800C262C6 /* TouchNodeBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9321E70A7800C262C6 /* TouchNodeBundle.swift */; };
+		07D09C9621E70A7800C262C6 /* TouchNodeBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9321E70A7800C262C6 /* TouchNodeBundle.swift */; };
+		07D09C9821E70ABD00C262C6 /* TouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9721E70ABD00C262C6 /* TouchNode.swift */; };
+		07D09C9921E70ABD00C262C6 /* TouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9721E70ABD00C262C6 /* TouchNode.swift */; };
+		07D09C9A21E70ABD00C262C6 /* TouchNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9721E70ABD00C262C6 /* TouchNode.swift */; };
+		07D09C9C21E70C1400C262C6 /* NodeBundleListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9B21E70C1400C262C6 /* NodeBundleListBuilder.swift */; };
+		07D09C9D21E70C1400C262C6 /* NodeBundleListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9B21E70C1400C262C6 /* NodeBundleListBuilder.swift */; };
+		07D09C9E21E70C1400C262C6 /* NodeBundleListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9B21E70C1400C262C6 /* NodeBundleListBuilder.swift */; };
+		07D09CA021E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */; };
+		07D09CA121E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */; };
+		07D09CA221E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */; };
+		07D09CA421E725F500C262C6 /* larock.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D09CA321E725F500C262C6 /* larock.png */; };
+		07D09CA521E725F500C262C6 /* larock.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D09CA321E725F500C262C6 /* larock.png */; };
+		07D09CA621E725F500C262C6 /* larock.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D09CA321E725F500C262C6 /* larock.png */; };
 		07D7197521E6AA510076D2CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7197421E6AA510076D2CC /* AppDelegate.swift */; };
 		07D7197721E6AA510076D2CC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07D7197621E6AA510076D2CC /* GameScene.sks */; };
 		07D7197921E6AA510076D2CC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07D7197821E6AA510076D2CC /* Actions.sks */; };
@@ -37,6 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07D09C7E21E6E28A00C262C6 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		07D09C9321E70A7800C262C6 /* TouchNodeBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchNodeBundle.swift; sourceTree = "<group>"; };
+		07D09C9721E70ABD00C262C6 /* TouchNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchNode.swift; sourceTree = "<group>"; };
+		07D09C9B21E70C1400C262C6 /* NodeBundleListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBundleListBuilder.swift; sourceTree = "<group>"; };
+		07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBundleListPositioner.swift; sourceTree = "<group>"; };
+		07D09CA321E725F500C262C6 /* larock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = larock.png; sourceTree = "<group>"; };
 		07D7197121E6AA510076D2CC /* InterestingInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterestingInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D7197421E6AA510076D2CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07D7197621E6AA510076D2CC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -80,6 +104,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07D09C7B21E6E19D00C262C6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				07D7197C21E6AA510076D2CC /* GameViewController.swift */,
+				07D09C7E21E6E28A00C262C6 /* InfoTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		07D09C7C21E6E1C500C262C6 /* Scene Editor FIles */ = {
+			isa = PBXGroup;
+			children = (
+				07D7197621E6AA510076D2CC /* GameScene.sks */,
+				07D7197821E6AA510076D2CC /* Actions.sks */,
+			);
+			path = "Scene Editor FIles";
+			sourceTree = "<group>";
+		};
+		07D09C7D21E6E22900C262C6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				07D7198321E6AA520076D2CC /* LaunchScreen.storyboard */,
+				07D7197E21E6AA510076D2CC /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		07D09C8221E6E2CD00C262C6 /* ResponderNodes */ = {
+			isa = PBXGroup;
+			children = (
+				07D09C9321E70A7800C262C6 /* TouchNodeBundle.swift */,
+				07D09C9721E70ABD00C262C6 /* TouchNode.swift */,
+				07D09C9B21E70C1400C262C6 /* NodeBundleListBuilder.swift */,
+				07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */,
+			);
+			path = ResponderNodes;
+			sourceTree = "<group>";
+		};
 		07D7196821E6AA510076D2CC = {
 			isa = PBXGroup;
 			children = (
@@ -103,14 +165,14 @@
 		07D7197321E6AA510076D2CC /* InterestingInfo */ = {
 			isa = PBXGroup;
 			children = (
+				07D09C7C21E6E1C500C262C6 /* Scene Editor FIles */,
+				07D09C7B21E6E19D00C262C6 /* View Controllers */,
 				07D7197421E6AA510076D2CC /* AppDelegate.swift */,
-				07D7197621E6AA510076D2CC /* GameScene.sks */,
-				07D7197821E6AA510076D2CC /* Actions.sks */,
+				07D09C7D21E6E22900C262C6 /* Storyboards */,
 				07D7197A21E6AA510076D2CC /* GameScene.swift */,
-				07D7197C21E6AA510076D2CC /* GameViewController.swift */,
-				07D7197E21E6AA510076D2CC /* Main.storyboard */,
+				07D09C8221E6E2CD00C262C6 /* ResponderNodes */,
 				07D7198121E6AA520076D2CC /* Assets.xcassets */,
-				07D7198321E6AA520076D2CC /* LaunchScreen.storyboard */,
+				07D09CA321E725F500C262C6 /* larock.png */,
 				07D7198621E6AA520076D2CC /* Info.plist */,
 			);
 			path = InterestingInfo;
@@ -241,6 +303,7 @@
 				07D7198021E6AA510076D2CC /* Main.storyboard in Resources */,
 				07D7197721E6AA510076D2CC /* GameScene.sks in Resources */,
 				07D7198221E6AA520076D2CC /* Assets.xcassets in Resources */,
+				07D09CA421E725F500C262C6 /* larock.png in Resources */,
 				07D7198521E6AA520076D2CC /* LaunchScreen.storyboard in Resources */,
 				07D7197921E6AA510076D2CC /* Actions.sks in Resources */,
 			);
@@ -250,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D09CA521E725F500C262C6 /* larock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D09CA621E725F500C262C6 /* larock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +332,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D09CA021E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */,
+				07D09C9821E70ABD00C262C6 /* TouchNode.swift in Sources */,
 				07D7197B21E6AA510076D2CC /* GameScene.swift in Sources */,
 				07D7197D21E6AA510076D2CC /* GameViewController.swift in Sources */,
 				07D7197521E6AA510076D2CC /* AppDelegate.swift in Sources */,
+				07D09C9C21E70C1400C262C6 /* NodeBundleListBuilder.swift in Sources */,
+				07D09C9421E70A7800C262C6 /* TouchNodeBundle.swift in Sources */,
+				07D09C7F21E6E28A00C262C6 /* InfoTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D09C9D21E70C1400C262C6 /* NodeBundleListBuilder.swift in Sources */,
+				07D09C9521E70A7800C262C6 /* TouchNodeBundle.swift in Sources */,
+				07D09C9921E70ABD00C262C6 /* TouchNode.swift in Sources */,
 				07D7199021E6AA520076D2CC /* InterestingInfoTests.swift in Sources */,
+				07D09CA121E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */,
+				07D09C8021E6E28A00C262C6 /* InfoTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +360,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D09C9E21E70C1400C262C6 /* NodeBundleListBuilder.swift in Sources */,
+				07D09C9621E70A7800C262C6 /* TouchNodeBundle.swift in Sources */,
+				07D09C9A21E70ABD00C262C6 /* TouchNode.swift in Sources */,
 				07D7199B21E6AA520076D2CC /* InterestingInfoUITests.swift in Sources */,
+				07D09CA221E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */,
+				07D09C8121E6E28A00C262C6 /* InfoTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

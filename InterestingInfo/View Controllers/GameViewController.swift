@@ -32,16 +32,54 @@ class GameViewController: UIViewController {
                 // Present the scene
                 if let view = self.view as! SKView? {
                     view.presentScene(sceneNode)
-                    
                     view.ignoresSiblingOrder = true
                     
-                    view.showsFPS = true
-                    view.showsNodeCount = true
+                    let nodeBundleListBuilder = NodeBundleListBuilder()
+                    
+                    //nodeBundleListBuilder.getData(strings: [String], images: [UIImage])
+                    nodeBundleListBuilder.getDataTest(toScene:sceneNode)
+                    let nodeBundleListPositioner = NodeBundleListPositioner(bundleList:nodeBundleListBuilder.getNodeBundleList())
+                    nodeBundleListPositioner.positionLinaer()
+                    
+                    createSpriteNotifications()
                 }
             }
         }
     }
+    
 
+    
+    @objc
+    func tableShowTapped(_ notification: Notification) {
+        
+        // get info from notification and build dict to pass to tableview
+        // if let shapeInfoNode = notification.object as? ResponderShapeAlertNode {//
+        // popup dialog
+        // performSegue(withIdentifier:"showMeDue", sender:shapeInfoNode)
+        //}
+    }
+    
+    
+    func createSpriteNotifications() {
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(tableShowTapped(_:)),
+                                               name: .TapToShowTable,
+                                               object: nil)
+    }
+    
+    
+    func unsubscribe() {
+        
+        NotificationCenter.default.removeObserver(self, name: .TapToShowTable, object: nil)
+    }
+    
+    
+    deinit {
+        unsubscribe()
+    }
+    
+    
     override var shouldAutorotate: Bool {
         return true
     }
