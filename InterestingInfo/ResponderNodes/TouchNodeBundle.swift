@@ -16,112 +16,88 @@ import SpriteKit
 class TouchNodeBundle : SKShapeNode{
     
     private (set) var photoNode: TouchNode?
-    private (set) var textNode: TouchNode
-    private (set) var tableButtonNode: TouchNode
-    private (set) var bookIsOpen: Bool
+    private (set) var textNode: TouchNode?
+    private (set) var tableButtonNode: TouchNode?
+    private (set) var bookIsOpen: Bool?
     
-    var r: Double
-    var theta: Double
-    var width: Double
-    var height: Double
-
-    init(photo: UIImage, text: String, rect: CGRect, cornerRadius: CGFloat) {
-
-        let photoInfoTouchNode = TouchNode(photo: photo, type: .photonode)
-        let textInfoTouchNode = TouchNode(text: text, type: .textnode)
-        let tableButtonTouchNode = TouchNode()
     
-        self.photoNode = photoInfoTouchNode
-        self.textNode = textInfoTouchNode
-        self.tableButtonNode = tableButtonTouchNode
-        
-        self.bookIsOpen = false
-        
-        self.r = 0.0
-        self.theta = 0.0
-        
-        self.width = 640.0
-        self.height = 170.0
-        
-        //self.init(rect: rect, cornerRadius: cornerRadius)
+    var nodeOnePosition:CGPoint{
+        get {
+            return CGPoint(x: 0.0, y: 0.0)
+        }
+    }
+    var nodeTwoPosition:CGPoint{
+        get {
+            return CGPoint(x: 80.0, y: 0.0)
+        }
+    }
+    var nodeThreePosition:CGPoint{
+        get {
+            return CGPoint(x: 160.0, y: 0.0)
+        }
     }
     
-    
-    // tester
-    init(photo: String, text: String, rect: CGRect, cornerRadius: CGFloat) {
-        
-        let photoInfoTouchNode = TouchNode(photo: photo, type: .photonodetesttext)
-        let textInfoTouchNode = TouchNode(text: text, type: .textnode)
-        let tableButtonTouchNode = TouchNode()
-        
-        self.photoNode = photoInfoTouchNode
-        self.textNode = textInfoTouchNode
-        self.tableButtonNode = tableButtonTouchNode
-        
-        self.bookIsOpen = false
-        
-        self.r = 0.0
-        self.theta = 0.0
-        
-        self.width = 640.0
-        self.height = 170.0
-        
-        //super.init(rect: rect, cornerRadius: cornerRadius)
-    }
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var height:CGFloat = 160.0
+    var width:CGFloat{
+        get {
+            return height/2.0
+        }
     }
     
     
     func positionNodes() {
-        
  
-        infoBack.lineWidth = 1.5
-        infoBack.alpha = 0.0
-        infoBack.setScale(0.1)
-        infoBack.name = "X"
-        infoBack.isUserInteractionEnabled = true
-        infoBack.strokeColor = SKColor.black
-        infoBack.fillColor = SKColor.black
-        infoBack.position = CGPoint(x: 0.0, y: 0.0)
+        self.isUserInteractionEnabled = true
         
-        self.scene!.addChild(infoBack)
+        let rect1 = CGRect(x:0, y:0, width: 2.0 * width, height: height)
+        let rect2 = CGRect(x:0, y:0, width: 2.0 * width, height: height)
+        let rect3 = CGRect(x:0, y:0, width: width, height: 0.75*height)
         
-        infoBack.addChild(photoNode!)
-        infoBack.addChild(textNode)
-        infoBack.addChild(tableButtonNode)
+        let photoInfoTouchNode = TouchNode(rect: rect1, cornerRadius: 5.0)
+        let textInfoTouchNode = TouchNode(rect: rect2, cornerRadius: 5.0)
+        let tableButtonTouchNode = TouchNode(rect: rect3, cornerRadius: 5.0)
         
-        let node1 = CGPoint(x: -160.0, y: 0.0)
-        let node2 = CGPoint(x: 0.0, y: 0.0)
-        let node3 = CGPoint(x: 160.0, y: 0.0)
-        photoNode?.position = node1
-        textNode.position = node2
-        tableButtonNode.position = node3
+        photoInfoTouchNode.strokeColor = SKColor.blue
+        photoInfoTouchNode.fillColor = SKColor.blue
+    
+        
+        photoInfoTouchNode.buildSpriteOverlay(type: .photonodetesttext)
+        textInfoTouchNode.buildSpriteOverlay(type: .textnode)
+        tableButtonTouchNode.buildSpriteOverlay(type: .tablenode)
+        
+        self.addChild(photoInfoTouchNode)
+        self.addChild(textInfoTouchNode)
+        self.addChild(tableButtonTouchNode)
+        
+        self.photoNode = photoInfoTouchNode
+        self.textNode = textInfoTouchNode
+        self.tableButtonNode = tableButtonTouchNode
+        
+        self.bookIsOpen = false
+
+        photoNode!.position = nodeOnePosition
+        textNode!.position = nodeTwoPosition
+        tableButtonNode!.position = nodeThreePosition
         
         createSpriteInfoNotifications()
     }
     
     
-    func toggleBookOpem() {
-        // when user taps book
+    func toggleBookOpen() {
+        // when user taps "photo" book
         if bookIsOpen == true {
             bookIsOpen = false
             
-            //let negDelta = CGVector(dx: -deltaX, dy: -deltaY)
-            //let action = SKAction.moveBy(x: -deltaX, y: -deltaX, duration: sec)
-            
             // close book
-            textNode.run(SKAction.moveBy(x: -160.0/2.0, y: 0.0, duration: 1.0))
-            tableButtonNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.2),
+            textNode!.run(SKAction.moveBy(x: -160.0/2.0, y: 0.0, duration: 1.0))
+            tableButtonNode!.run(SKAction.sequence([SKAction.wait(forDuration: 0.2),
                                         SKAction.moveBy(x: -160.0/2.0 - 160.0/3.0 , y: 0.0, duration: 1.0)]))
         }
         else {
             bookIsOpen = true
             // open book
-            tableButtonNode.run(SKAction.moveBy(x: 160.0/2.0 + 160.0/3.0, y: 0.0, duration: 1.0))
-            textNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.2),
+            tableButtonNode!.run(SKAction.moveBy(x: 160.0/2.0 + 160.0/3.0, y: 0.0, duration: 1.0))
+            textNode!.run(SKAction.sequence([SKAction.wait(forDuration: 0.2),
                                                    SKAction.moveBy(x: 160.0/2.0 , y: 0.0, duration: 1.0)]))
         }
     }
@@ -130,11 +106,10 @@ class TouchNodeBundle : SKShapeNode{
     // MARK: - Notifications
     
     func createSpriteInfoNotifications() {
-        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(doorOpenCloseTapped(_:)),
                                                name: .TapToOpenClose,
-                                               object: nil)
+                                               object: photoNode)
         
     }
     
@@ -153,15 +128,12 @@ class TouchNodeBundle : SKShapeNode{
     @objc
     func doorOpenCloseTapped(_ notification: Notification) {
         
-        toggleBookOpem()
+        toggleBookOpen()
         // get info from notification and build dict to pass to tableview
         // if let shapeInfoNode = notification.object as? ResponderShapeAlertNode {//
         // popup dialog
         // performSegue(withIdentifier:"showMeDue", sender:shapeInfoNode)
         //}
     }
-    
-    
-    
     
 }

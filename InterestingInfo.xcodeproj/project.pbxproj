@@ -22,9 +22,6 @@
 		07D09CA021E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */; };
 		07D09CA121E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */; };
 		07D09CA221E70D5000C262C6 /* NodeBundleListPositioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */; };
-		07D09CA421E725F500C262C6 /* larock.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D09CA321E725F500C262C6 /* larock.png */; };
-		07D09CA521E725F500C262C6 /* larock.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D09CA321E725F500C262C6 /* larock.png */; };
-		07D09CA621E725F500C262C6 /* larock.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D09CA321E725F500C262C6 /* larock.png */; };
 		07D7197521E6AA510076D2CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D7197421E6AA510076D2CC /* AppDelegate.swift */; };
 		07D7197721E6AA510076D2CC /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07D7197621E6AA510076D2CC /* GameScene.sks */; };
 		07D7197921E6AA510076D2CC /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07D7197821E6AA510076D2CC /* Actions.sks */; };
@@ -60,7 +57,6 @@
 		07D09C9721E70ABD00C262C6 /* TouchNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchNode.swift; sourceTree = "<group>"; };
 		07D09C9B21E70C1400C262C6 /* NodeBundleListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBundleListBuilder.swift; sourceTree = "<group>"; };
 		07D09C9F21E70D5000C262C6 /* NodeBundleListPositioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBundleListPositioner.swift; sourceTree = "<group>"; };
-		07D09CA321E725F500C262C6 /* larock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = larock.png; sourceTree = "<group>"; };
 		07D7197121E6AA510076D2CC /* InterestingInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterestingInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D7197421E6AA510076D2CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07D7197621E6AA510076D2CC /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -172,7 +168,6 @@
 				07D7197A21E6AA510076D2CC /* GameScene.swift */,
 				07D09C8221E6E2CD00C262C6 /* ResponderNodes */,
 				07D7198121E6AA520076D2CC /* Assets.xcassets */,
-				07D09CA321E725F500C262C6 /* larock.png */,
 				07D7198621E6AA520076D2CC /* Info.plist */,
 			);
 			path = InterestingInfo;
@@ -303,7 +298,6 @@
 				07D7198021E6AA510076D2CC /* Main.storyboard in Resources */,
 				07D7197721E6AA510076D2CC /* GameScene.sks in Resources */,
 				07D7198221E6AA520076D2CC /* Assets.xcassets in Resources */,
-				07D09CA421E725F500C262C6 /* larock.png in Resources */,
 				07D7198521E6AA520076D2CC /* LaunchScreen.storyboard in Resources */,
 				07D7197921E6AA510076D2CC /* Actions.sks in Resources */,
 			);
@@ -313,7 +307,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D09CA521E725F500C262C6 /* larock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +314,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D09CA621E725F500C262C6 /* larock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

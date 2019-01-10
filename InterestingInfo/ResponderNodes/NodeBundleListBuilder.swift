@@ -45,9 +45,8 @@ class  NodeBundleListBuilder {
     
     func addNodeBundle(photo: UIImage, text: String, toScene:SKScene) {
         
-        let rect = CGRect(x:0, y:0, width:width , height: height)
-        //let infoBack = SKShapeNode(rect: rect, cornerRadius: 5.0)
-        let newItem = TouchNodeBundle.init(photo: photo, text: text, rect: rect, cornerRadius: 5.0)
+        let rect = CGRect(x:0, y:0, width:360.0 , height: 170.0)
+        let newItem = TouchNodeBundle.init(rect: rect, cornerRadius: 5.0)
         toScene.addChild(newItem)
         
         touchNodeBundleList.append(newItem)
@@ -66,8 +65,8 @@ class  NodeBundleListBuilder {
     
     func addNodeBundleTest(photo: String, text: String, toScene:SKScene) {
         
-        let rect = CGRect(x:0, y:0, width: width , height: height)
-        let newItem = TouchNodeBundle(photo: photo, text: text, rect: rect, cornerRadius: 5.0)
+        let rect = CGRect(x:0 , y: 0, width: 360.0, height: 170.0)
+        let newItem = TouchNodeBundle.init(rect: rect, cornerRadius: 5.0)
         
         newItem.positionNodes()
         
