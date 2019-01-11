@@ -19,10 +19,6 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
 
         self.lastUpdateTime = 0
-        
-
-        // Create shape node to use during mouse interaction
-        
 
     }
     

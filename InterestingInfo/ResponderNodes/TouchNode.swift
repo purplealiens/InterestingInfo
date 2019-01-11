@@ -23,6 +23,17 @@ enum NodeType {
     case photonode
     case textnode
     case tablenode
+    
+    func shortDescription() -> String {
+        switch self {
+            case .photonode:
+                return "photo node"
+            case .textnode:
+                return "text node"
+            case .tablenode:
+                return "table node"
+        }
+    }
 }
 
 
@@ -61,15 +72,15 @@ class TouchNode : SKShapeNode {
         
         switch type {
             case .photonode:
-                self.name = "photo"
-                node.strokeColor = SKColor.red
-                node.fillColor = SKColor.red
+                self.name = NodeType.photonode.shortDescription()
+                node.strokeColor = SKColor.blue
+                node.fillColor = SKColor.blue
             case .textnode:
-                self.name = "text"
+                self.name = NodeType.textnode.shortDescription()
                 node.strokeColor = SKColor.white
                 node.fillColor = SKColor.white
             case .tablenode:
-                self.name = "button"
+                self.name = NodeType.tablenode.shortDescription()
                 node.strokeColor = SKColor.gray
                 node.fillColor = SKColor.gray
         }
@@ -90,18 +101,19 @@ class TouchNode : SKShapeNode {
     func addText() {
         let titleNode = SKLabelNode(fontNamed: "Helvetica Neue")
         titleNode.text = textName
-        titleNode.fontSize = 26.0
-        titleNode.fontColor = SKColor.green
-        titleNode.position = CGPoint(x: self.frame.width/2.0, y:self.frame.height/2.0 )
+        titleNode.fontSize = 26
+        titleNode.fontColor = SKColor.darkGray
+        titleNode.position = CGPoint(x: self.frame.width/2.0 + 25.0, y: self.frame.height/2.0 + 20.0)
         titleNode.isUserInteractionEnabled = false
-        self.zPosition = 200
+        titleNode.zPosition = 10.0
+        self.zPosition = 80.0
         self.addChild(titleNode)
     }
     
     
     func addTextImage() {
         let notes = SKSpriteNode(imageNamed: "notes.png")
-        notes.position = CGPoint(x: self.frame.width/2.0, y: self.frame.height/2.0)
+        notes.position = CGPoint(x: self.frame.width/2.0 + 20.0, y: self.frame.height/2.0 - 20.0)
         notes.alpha = 1.0
         notes.zPosition = 2.0
         self.zPosition = -5.0
@@ -113,7 +125,6 @@ class TouchNode : SKShapeNode {
         titleNode.fontColor = SKColor.green
         titleNode.position = CGPoint(x: self.frame.width/2.0, y:self.frame.height/2.0 )
         titleNode.isUserInteractionEnabled = false
-        //self.zPosition = 200
         self.addChild(titleNode)
     }
     
@@ -189,10 +200,10 @@ class TouchNode : SKShapeNode {
     // MARK: - Touch
     func touchDown(atPoint pos : CGPoint) {
         
-        if self.name == "photo"  {
+        if self.name == NodeType.photonode.shortDescription()  {
             postOpenDoorMessage()
         }
-        else if self.name == "button" {
+        else if self.name == NodeType.tablenode.shortDescription() {
             postShowTableMessage()
         }
     }

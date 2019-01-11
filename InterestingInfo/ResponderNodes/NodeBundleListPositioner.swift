@@ -5,6 +5,8 @@
 //  Created by O W Williams on 1/9/19.
 //  Copyright © 2019 Onomaly LLC. All rights reserved.
 //
+// Displays SpriteKit folders in some interesting ways
+//
 
 import UIKit
 import SpriteKit
@@ -33,7 +35,7 @@ class NodeBundleListPositioner {
     
     
     func positionLinaer() {
-        var yshift = -600.0
+        var yshift = -500.0
         for item in touchNodeBundleList! {
             let x = -170.0
             let y = yshift

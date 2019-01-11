@@ -18,13 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CSz-iU-BQp" appends="YES" id="B65-wf-LgN"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="dblTapGestureRecognizer" destination="CSz-iU-BQp" id="l5z-J2-T2B"/>
                         <segue destination="cC4-ce-S2k" kind="show" identifier="infoTableSegue" id="vRM-bX-2sV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="CSz-iU-BQp">
+                    <connections>
+                        <action selector="dblTapGesture:" destination="BV1-FR-VrT" id="Iff-9K-Whc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="755" y="11"/>
         </scene>

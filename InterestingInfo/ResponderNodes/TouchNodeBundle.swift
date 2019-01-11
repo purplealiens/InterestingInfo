@@ -28,7 +28,7 @@ class TouchNodeBundle : SKShapeNode{
     }
     
     
-    func positionNodes(text: String) {
+    func buildNodes(withName: String) {
  
         self.isUserInteractionEnabled = true
         self.strokeColor = SKColor.clear
@@ -36,6 +36,7 @@ class TouchNodeBundle : SKShapeNode{
         let bw = self.frame.width
         let bh = self.frame.height
         
+        // base all dimensions pn width/height of bundle
         let center1 = CGPoint(x: bw * (9.0/40.0), y: bh/2.0)
         let center2 = CGPoint(x: 0.5*bw * (27.0/40.0), y: bh/2.0)
         let center3 = CGPoint(x: 0.6*bw * (19.0/20.0), y: bh/2.0)
@@ -52,12 +53,13 @@ class TouchNodeBundle : SKShapeNode{
         let textInfoTouchNode = TouchNode(rect: rect2, cornerRadius: 5.0)
         let tableButtonTouchNode = TouchNode(rect: rect3, cornerRadius: 5.0)
         
-        photoInfoTouchNode.strokeColor = SKColor.red
+        // The parents are outlines that respond to touch, the children paint the picture
+        photoInfoTouchNode.strokeColor = SKColor.blue
         textInfoTouchNode.strokeColor = SKColor.white
         tableButtonTouchNode.strokeColor = SKColor.gray
         
         photoInfoTouchNode.buildSpriteOverlay(type: .photonode)             // On touch opens "note detail"
-        textInfoTouchNode.buildSpriteOverlay(type: .textnode, name: text)  
+        textInfoTouchNode.buildSpriteOverlay(type: .textnode, name: withName)  
         tableButtonTouchNode.buildSpriteOverlay(type: .tablenode)           // On touch segues to table
         
         self.addChild(textInfoTouchNode)
@@ -74,20 +76,31 @@ class TouchNodeBundle : SKShapeNode{
     }
     
     
+    func openBook() {
+        guard bookIsOpen == false else { return }
+
+        tableButtonNode!.run(SKAction.moveBy(x: 180.0/2.0, y: 0.0, duration: 0.9))
+        textNode!.run(SKAction.moveBy(x: 180.0/2.0, y: 0.0, duration: 0.9))
+        bookIsOpen = true
+    }
+    
+    
+    func closeBook() {
+        guard bookIsOpen == true else { return }
+
+        textNode!.run(SKAction.moveBy(x: -180.0/2.0, y: 0.0, duration: 0.9))
+        tableButtonNode!.run(SKAction.moveBy(x: -180.0/2.0, y: 0.0, duration: 0.9))
+        bookIsOpen = false
+    }
+    
+    
     func toggleBookOpen() {
         // when user taps "photo" book
         if bookIsOpen == true {
-            bookIsOpen = false
-            
-            // close book
-            textNode!.run(SKAction.moveBy(x: -180.0/2.0, y: 0.0, duration: 0.9))
-            tableButtonNode!.run(SKAction.moveBy(x: -180.0/2.0, y: 0.0, duration: 0.9))
+            closeBook()
         }
         else {
-            bookIsOpen = true
-            // open book
-            tableButtonNode!.run(SKAction.moveBy(x: 180.0/2.0, y: 0.0, duration: 0.9))
-            textNode!.run(SKAction.moveBy(x: 180.0/2.0, y: 0.0, duration: 0.9))
+            openBook()
         }
     }
     
@@ -95,17 +108,17 @@ class TouchNodeBundle : SKShapeNode{
     // MARK: - Observe Notifications
     
     func createSpriteInfoNotifications() {
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(doorOpenCloseTapped(_:)),
                                                name: .TapToOpenClose,
                                                object: photoNode)
-        
     }
     
     
     func unsubscribe() {
-        NotificationCenter.default.removeObserver(self, name: .TapToOpenClose, object: nil)
         
+        NotificationCenter.default.removeObserver(self, name: .TapToOpenClose, object: nil)
     }
     
     
@@ -118,11 +131,6 @@ class TouchNodeBundle : SKShapeNode{
     func doorOpenCloseTapped(_ notification: Notification) {
         
         toggleBookOpen()
-        // get info from notification and build dict to pass to tableview
-        // if let shapeInfoNode = notification.object as? ResponderShapeAlertNode {//
-        // popup dialog
-        // performSegue(withIdentifier:"showMeDue", sender:shapeInfoNode)
-        //}
     }
     
 }

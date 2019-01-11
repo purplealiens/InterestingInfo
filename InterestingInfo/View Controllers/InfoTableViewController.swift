@@ -11,10 +11,8 @@ import UIKit
 class DepartmentStaffTabelCell : UITableViewCell {
     
     @IBOutlet weak var personImageView: UIImageView!
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var notesImageView: UIImageView!
-    
 }
 
 
@@ -22,6 +20,7 @@ class DepartmentStaffTabelCell : UITableViewCell {
 class InfoTableViewController: UITableViewController {
     
     var tableData = [String]()
+    
     
     // MARK:- Overrides
     
@@ -65,6 +64,20 @@ class InfoTableViewController: UITableViewController {
         
         if cell.accessoryType == .checkmark {
             cell.accessoryType = .none
+        }
+        
+        // add some random variability to images
+        let imageChoice = Int.random(in: 0..<3)
+        
+        switch imageChoice {
+            case 0:
+                cell.notesImageView.image = UIImage(named:"notes")
+            case 1:
+                cell.notesImageView.image = UIImage(named:"notes2")
+            case 2:
+                cell.notesImageView.image = UIImage(named:"notes3")
+            default:
+                cell.notesImageView.image = UIImage(named:"notes3")
         }
         
         cell.nameLabel.text = tableData[indexPath.row]

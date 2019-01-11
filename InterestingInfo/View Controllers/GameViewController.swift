@@ -11,7 +11,8 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    @IBOutlet var dblTapGestureRecognizer: UITapGestureRecognizer!
+    
     var nodeBundleListBuilder: NodeBundleListBuilder?
     
     override func viewDidLoad() {
@@ -50,16 +51,22 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
 
+    @IBAction func dblTapGesture(_ sender: Any) {
+        nodeBundleListBuilder!.getNodeBundleListCloseAllDoors() 
+    }
     
     @objc
     func tableShowTapped(_ notification: Notification) {
-        
+        // load tableVIew when small gray button is selected
         if let touchInfoNode = notification.object as? TouchNode {
             performSegue(withIdentifier:"infoTableSegue", sender:touchInfoNode)
         }
     }
     
+    
+    // MARK:- Notification observers
     
     func createSpriteNotifications() {
 
@@ -80,7 +87,7 @@ class GameViewController: UIViewController {
         unsubscribe()
     }
     
-    // MARK:- Segue actinos
+    // MARK:- Segue actions
     
     @IBAction func unwindCancelAction(unwindSegue: UIStoryboardSegue){
         
