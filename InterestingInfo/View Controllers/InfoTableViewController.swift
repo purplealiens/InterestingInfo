@@ -9,10 +9,18 @@
 import UIKit
 
 class DepartmentStaffTabelCell : UITableViewCell {
+//    @IBOutlet weak var personImageView: UIImageView!//
+//    @IBOutlet weak var notesImageView: UIImageView!
+//    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var personImageView: UIImageView!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var notesImageView: UIImageView!
     
 }
 
+var data:[String] = ["Tim S.", "Chetan R.", "Jan L.", "Dexter H.", "Kim Y."]
+let stringsImages:[String] = ["image 1", "image 2", "image 3", "image 4", "image 5"]
 class InfoTableViewController: UITableViewController {
     
     // MARK:- Overrides
@@ -20,6 +28,7 @@ class InfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.rowHeight = 150.0
     }
     
     
@@ -44,7 +53,7 @@ class InfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return data.count
         
     }
     
@@ -52,7 +61,7 @@ class InfoTableViewController: UITableViewController {
     // MARK:- TableView Datasource and delegate
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+         let cell:DepartmentStaffTabelCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DepartmentStaffTabelCell
         
         if cell.accessoryType == .checkmark {
             cell.accessoryType = .none
@@ -65,6 +74,8 @@ class InfoTableViewController: UITableViewController {
         //}
         
         //cell.textLabel!.text = object
+        
+        cell.nameLabel.text = data[indexPath.row]
         
         return cell
     }

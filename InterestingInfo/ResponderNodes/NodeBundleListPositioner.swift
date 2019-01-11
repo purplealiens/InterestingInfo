@@ -33,7 +33,7 @@ class NodeBundleListPositioner {
     
     
     func positionLinaer() {
-        var yshift = -380.0
+        var yshift = -480.0
         for item in touchNodeBundleList! {
             let x = -205.0
             let y = yshift

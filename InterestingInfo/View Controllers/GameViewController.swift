@@ -39,7 +39,7 @@ class GameViewController: UIViewController {
                     //nodeBundleListBuilder.getData(strings: [String], images: [UIImage])
                     nodeBundleListBuilder.getDataTest(toScene:sceneNode)
                     let nodeBundleListPositioner = NodeBundleListPositioner(bundleList:nodeBundleListBuilder.getNodeBundleList())
-                    nodeBundleListPositioner.positionCircle()
+                    nodeBundleListPositioner.positionLinaer()
                     
                     createSpriteNotifications()
                 }
@@ -57,6 +57,11 @@ class GameViewController: UIViewController {
         // popup dialog
         // performSegue(withIdentifier:"showMeDue", sender:shapeInfoNode)
         //}
+        if let touchInfoNode = notification.object as? TouchNode {
+            // popup dialog
+            performSegue(withIdentifier:"infoTableSegue", sender:touchInfoNode)
+        }
+        
     }
     
     
@@ -82,7 +87,7 @@ class GameViewController: UIViewController {
     // MARK:- Segue actinos
     @IBAction func unwindCancelAction(unwindSegue: UIStoryboardSegue){
         
-        showHideCompletedControl()
+        //showHideCompletedControl()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
