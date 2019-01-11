@@ -25,10 +25,49 @@ class InterestingInfoUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    testPhotoNodePressed()
+testTableOpenNodePressed()
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testPhotoNodePressed() {
+        
+        let element = XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element
+        element.tap()
+        
+        let element2 = element.children(matching: .other).element
+        element2.children(matching: .other).element(boundBy: 1).otherElements["text"].children(matching: .other).matching(identifier: "Dexter H.").element(boundBy: 0).tap()
+        element.tap()
+        element2.children(matching: .other).element(boundBy: 3).otherElements["text"].children(matching: .other).matching(identifier: "Chetan R.").element(boundBy: 0).tap()
+        element.tap()
+        
+    }
+    
+    func testTableOpenNodePressed() {
+        
+        let app = XCUIApplication()
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element
+        element.tap()
+        element.tap()
+        
+        let backButton = app.navigationBars["Staff"].buttons["Back"]
+        backButton.tap()
+        element.tap()
+        
+        let tablesQuery = app.tables
+        let chetanRStaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Chetan R."]/*[[".cells.staticTexts[\"Chetan R.\"]",".staticTexts[\"Chetan R.\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        chetanRStaticText.tap()
+        backButton.tap()
+        element.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Dexter H."]/*[[".cells.staticTexts[\"Dexter H.\"]",".staticTexts[\"Dexter H.\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        backButton.tap()
+        element.tap()
+        chetanRStaticText.tap()
+        backButton.tap()
+ 
+        
     }
 
 }
