@@ -8,6 +8,10 @@
 
 import UIKit
 
+class DepartmentStaffTabelCell : UITableViewCell {
+    
+    
+}
 
 class InfoTableViewController: UITableViewController {
     
@@ -40,7 +44,7 @@ class InfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return 5
         
     }
     

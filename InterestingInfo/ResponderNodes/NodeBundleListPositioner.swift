@@ -15,9 +15,10 @@ class NodeBundleListPositioner {
     
     var randomRadius: Double {
         get {
-                return Double.random(in: 50.0 ..< 400.0)
+            return Double.random(in: 50.0 ..< 400.0)
         }
     }
+    
     
     var randomTheta: Double {
         get {
@@ -34,16 +35,11 @@ class NodeBundleListPositioner {
     func positionLinaer() {
         var yshift = -380.0
         for item in touchNodeBundleList! {
-            let x = -60.0
+            let x = -205.0
             let y = yshift
-            yshift += 180.0
+            yshift += 200.0
             item.position = CGPoint(x: x, y: y)
         }
-    }
-    
-    
-    func positionStar() {
-        
     }
     
     
@@ -53,6 +49,21 @@ class NodeBundleListPositioner {
             let y = randomRadius * sin(randomTheta)
             
             item.position = CGPoint(x: x, y: y)
+        }
+    }
+    
+    
+    func positionCircle() {
+        let radius = 280.0
+        var randomTheta = 0.0
+        
+        for item in touchNodeBundleList! {
+            let x = radius * cos(randomTheta*Double.pi/180.0)
+            let y = radius * sin(randomTheta*Double.pi/180.0)
+            
+            item.position = CGPoint(x: x, y: y)
+            
+            randomTheta += 72.0
         }
     }
     

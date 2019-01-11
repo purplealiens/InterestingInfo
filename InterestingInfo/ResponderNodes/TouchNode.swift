@@ -28,6 +28,22 @@ enum NodeType {
 }
 
 
+struct Rect {
+    var origin = CGPoint(x: 0.0, y: 0.0)
+    var size = CGSize(width: 0.0, height: 0.0)
+}
+
+
+extension CGRect {
+    init(center: CGPoint, size: CGSize){
+        let xOrigin = center.x - (size.width / 2.0)
+        let yOrigin = center.y - (size.height / 2.0)
+        
+        self.init(origin:CGPoint(x: xOrigin, y: yOrigin), size: size)
+    }
+}
+
+
 class TouchNode : SKShapeNode {
     
     var photo:UIImage?
@@ -40,26 +56,17 @@ class TouchNode : SKShapeNode {
         }
     }
     
+    
     // MARK: - Sprite Construction
-    func buildSpriteOverlay(type:NodeType) {
-
-        self.isUserInteractionEnabled = true
-        
-        let rect = CGRect(x:0, y:0, width: width, height: height)
-        
-        let node = SKShapeNode(rect: rect, cornerRadius: 5.0)
-        node.lineWidth = 1.5
-        node.alpha = 1.0
-        
-        // SKShapeNode are for appearance, let parent TouchNode respond to touch
-        node.isUserInteractionEnabled = false
+    
+    func addOverlayColors(node: SKShapeNode, type:NodeType) {
         
         switch type {
             case .photonodetesttext:
                 // display photograph
                 self.name = "photo"
                 node.strokeColor = SKColor.red
-                node.fillColor = SKColor.clear
+                node.fillColor = SKColor.red
             case .photonode:
                 self.name = "photo"
                 node.strokeColor = SKColor.red
@@ -73,11 +80,49 @@ class TouchNode : SKShapeNode {
                 node.strokeColor = SKColor.gray
                 node.fillColor = SKColor.gray
         }
+    }
+    
+    
+    func addOverlayFeatures(node: SKShapeNode, type:NodeType) {
+  /*
+        switch type {
+            case .photonodetesttext:
+      
+            case .photonode:
+
+            case .textnode:
+
+            case .tablenode:
+        }
+ */
+    }
+    
+    
+    func buildSpriteOverlay(type:NodeType) {
+
+        self.isUserInteractionEnabled = true
+        
+        let rect = CGRect(x:self.frame.origin.x,
+                         y:self.frame.origin.y,
+                         width: self.frame.width,
+                         height: self.frame.height)
+        
+        let node = SKShapeNode(rect: rect, cornerRadius: 5.0)
+        node.lineWidth = 1.5
+        node.alpha = 1.0
+        
+        // SKShapeNode are for appearance, let parent TouchNode respond to touch
+        node.isUserInteractionEnabled = false
         node.position = CGPoint(x: 0.0, y: 0.0)
+        
+        addOverlayColors(node: node, type:type)
+        addOverlayFeatures(node: node, type:type)
+        
         self.addChild(node)
     }
     
     
+     // MARK: - Post Notifications
     func postOpenDoorMessage() {
         NotificationCenter.default.post(name: .TapToOpenClose,
                                         object: self,
@@ -113,11 +158,9 @@ class TouchNode : SKShapeNode {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
     
-
 }

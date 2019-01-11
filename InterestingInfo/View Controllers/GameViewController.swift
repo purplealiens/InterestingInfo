@@ -39,7 +39,7 @@ class GameViewController: UIViewController {
                     //nodeBundleListBuilder.getData(strings: [String], images: [UIImage])
                     nodeBundleListBuilder.getDataTest(toScene:sceneNode)
                     let nodeBundleListPositioner = NodeBundleListPositioner(bundleList:nodeBundleListBuilder.getNodeBundleList())
-                    nodeBundleListPositioner.positionLinaer()
+                    nodeBundleListPositioner.positionCircle()
                     
                     createSpriteNotifications()
                 }
@@ -77,6 +77,20 @@ class GameViewController: UIViewController {
     
     deinit {
         unsubscribe()
+    }
+    
+    // MARK:- Segue actinos
+    @IBAction func unwindCancelAction(unwindSegue: UIStoryboardSegue){
+        
+        showHideCompletedControl()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // "segue" source, destination, idetifier
+        // sender, object that initiated the segue,
+        
+
     }
     
     

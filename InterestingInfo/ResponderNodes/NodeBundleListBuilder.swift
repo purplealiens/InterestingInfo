@@ -17,7 +17,13 @@ class  NodeBundleListBuilder {
     
     var stringData = [String]()  // get from files or REST Data
     var imageData = [UIImage]()   // get from files or REST Data
+    var width:CGFloat
+    var height:CGFloat
     
+    init() {
+        self.width = 360.0
+        self.height = 170.0
+    }
     
     
     func getData(strings: [String], images: [UIImage], toScene:SKScene) {
@@ -32,12 +38,11 @@ class  NodeBundleListBuilder {
     
     func getDataTest(toScene:SKScene) {
         
-        let strings = ["text 1", "text 2", "text 3", "text 4", "text 5" ]
-        let stringsImages = ["image 1", "image 2", "image 3", "image 4", "image 5" ]
+        let strings = ["Tim S.", "Chetan R.", "Jan L.", "Dexter H.", "Kim Y."]
+        let stringsImages = ["image 1", "image 2", "image 3", "image 4", "image 5"]
         var indx = 0
         for _ in strings {
-            addNodeBundleTest(photo: strings[indx], text: stringsImages[indx], toScene:toScene)
-            // addNodeBundle(photo: string[indx], text: stringsImages[indx])
+            addNodeBundle(photo: strings[indx], text: stringsImages[indx], toScene:toScene)
             indx += 1
         }
     }
@@ -52,23 +57,14 @@ class  NodeBundleListBuilder {
         touchNodeBundleList.append(newItem)
     }
     
-    /*
- 
- func addNodeBundle(photo: UIImage, text: String, toScene:SKScene) {
- 
-
- let newItem = TouchNodeBundle.init(photo: photo, text: text)
- 
- touchNodeBundleList.append(newItem)
- }*/
     
-    
-    func addNodeBundleTest(photo: String, text: String, toScene:SKScene) {
+    func addNodeBundle(photo: String, text: String, toScene:SKScene) {
         
-        let rect = CGRect(x:0 , y: 0, width: 360.0, height: 170.0)
+        let rect = CGRect(x:0.0, y: 0.0, width: width, height: height)
         let newItem = TouchNodeBundle.init(rect: rect, cornerRadius: 5.0)
         
         newItem.positionNodes()
+        newItem.strokeColor = SKColor.clear
         
         toScene.addChild(newItem)
         

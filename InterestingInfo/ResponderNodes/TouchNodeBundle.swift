@@ -20,23 +20,6 @@ class TouchNodeBundle : SKShapeNode{
     private (set) var tableButtonNode: TouchNode?
     private (set) var bookIsOpen: Bool?
     
-    
-    var nodeOnePosition:CGPoint{
-        get {
-            return CGPoint(x: 0.0, y: 0.0)
-        }
-    }
-    var nodeTwoPosition:CGPoint{
-        get {
-            return CGPoint(x: 80.0, y: 0.0)
-        }
-    }
-    var nodeThreePosition:CGPoint{
-        get {
-            return CGPoint(x: 160.0, y: 0.0)
-        }
-    }
-    
     var height:CGFloat = 160.0
     var width:CGFloat{
         get {
@@ -49,24 +32,40 @@ class TouchNodeBundle : SKShapeNode{
  
         self.isUserInteractionEnabled = true
         
-        let rect1 = CGRect(x:0, y:0, width: 2.0 * width, height: height)
-        let rect2 = CGRect(x:0, y:0, width: 2.0 * width, height: height)
-        let rect3 = CGRect(x:0, y:0, width: width, height: 0.75*height)
+        let bw = self.frame.width
+        let bh = self.frame.height
+        
+        let center1 = CGPoint(x: bw * (9.0/40.0), y: bh/2.0)
+        let center2 = CGPoint(x: 0.5*bw * (27.0/40.0), y: bh/2.0)
+        let center3 = CGPoint(x: 0.6*bw * (19.0/20.0), y: bh/2.0)
+        
+        let size1 = CGSize(width: bw * (9.0/20.0), height: bh)
+        let size2 = CGSize(width: bw * (9.0/20.0), height: bh)
+        let size3 = CGSize(width: bw/10.0, height: bh/3.0)
+        
+        let rect1 = CGRect(center: center1, size: size1)
+        let rect2 = CGRect(center: center2, size: size2)
+        let rect3 = CGRect(center: center3, size: size3)
         
         let photoInfoTouchNode = TouchNode(rect: rect1, cornerRadius: 5.0)
         let textInfoTouchNode = TouchNode(rect: rect2, cornerRadius: 5.0)
         let tableButtonTouchNode = TouchNode(rect: rect3, cornerRadius: 5.0)
         
-        photoInfoTouchNode.strokeColor = SKColor.blue
-        photoInfoTouchNode.fillColor = SKColor.blue
-    
+        photoInfoTouchNode.strokeColor = SKColor.red
+        //photoInfoTouchNode.fillColor = SKColor.red
+        
+        textInfoTouchNode.strokeColor = SKColor.white
+        //textInfoTouchNode.fillColor = SKColor.white
+        
+        tableButtonTouchNode.strokeColor = SKColor.gray
+        //tableButtonTouchNode.fillColor = SKColor.gray
         
         photoInfoTouchNode.buildSpriteOverlay(type: .photonodetesttext)
         textInfoTouchNode.buildSpriteOverlay(type: .textnode)
         tableButtonTouchNode.buildSpriteOverlay(type: .tablenode)
         
-        self.addChild(photoInfoTouchNode)
         self.addChild(textInfoTouchNode)
+        self.addChild(photoInfoTouchNode)
         self.addChild(tableButtonTouchNode)
         
         self.photoNode = photoInfoTouchNode
@@ -75,10 +74,6 @@ class TouchNodeBundle : SKShapeNode{
         
         self.bookIsOpen = false
 
-        photoNode!.position = nodeOnePosition
-        textNode!.position = nodeTwoPosition
-        tableButtonNode!.position = nodeThreePosition
-        
         createSpriteInfoNotifications()
     }
     
@@ -89,21 +84,19 @@ class TouchNodeBundle : SKShapeNode{
             bookIsOpen = false
             
             // close book
-            textNode!.run(SKAction.moveBy(x: -160.0/2.0, y: 0.0, duration: 1.0))
-            tableButtonNode!.run(SKAction.sequence([SKAction.wait(forDuration: 0.2),
-                                        SKAction.moveBy(x: -160.0/2.0 - 160.0/3.0 , y: 0.0, duration: 1.0)]))
+            textNode!.run(SKAction.moveBy(x: -180.0/2.0, y: 0.0, duration: 0.9))
+            tableButtonNode!.run(SKAction.moveBy(x: -180.0/2.0, y: 0.0, duration: 0.9))
         }
         else {
             bookIsOpen = true
             // open book
-            tableButtonNode!.run(SKAction.moveBy(x: 160.0/2.0 + 160.0/3.0, y: 0.0, duration: 1.0))
-            textNode!.run(SKAction.sequence([SKAction.wait(forDuration: 0.2),
-                                                   SKAction.moveBy(x: 160.0/2.0 , y: 0.0, duration: 1.0)]))
+            tableButtonNode!.run(SKAction.moveBy(x: 180.0/2.0, y: 0.0, duration: 0.9))
+            textNode!.run(SKAction.moveBy(x: 180.0/2.0, y: 0.0, duration: 0.9))
         }
     }
     
     
-    // MARK: - Notifications
+    // MARK: - Observe Notifications
     
     func createSpriteInfoNotifications() {
         NotificationCenter.default.addObserver(self,
