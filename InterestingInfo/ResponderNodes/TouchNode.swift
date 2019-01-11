@@ -13,7 +13,6 @@ import UIKit
 import SpriteKit
 
 
-
 extension Notification.Name {
     public static let TapToShowTable = NSNotification.Name("TapToShowTable")
     public static let TapToOpenClose = NSNotification.Name("TapToOpenClose")
@@ -22,7 +21,6 @@ extension Notification.Name {
 
 enum NodeType {
     case photonode
-    case photonodetesttext
     case textnode
     case tablenode
 }
@@ -47,7 +45,7 @@ extension CGRect {
 class TouchNode : SKShapeNode {
     
     var photo:UIImage?
-    var text:String?
+    var textName:String?
     var type:NodeType = .photonode
     var height:CGFloat = 160.0
     var width:CGFloat{
@@ -57,16 +55,11 @@ class TouchNode : SKShapeNode {
     }
     
     
-    // MARK: - Sprite Construction
+    // MARK: - Sprite Constructions
     
     func addOverlayColors(node: SKShapeNode, type:NodeType) {
         
         switch type {
-            case .photonodetesttext:
-                // display photograph
-                self.name = "photo"
-                node.strokeColor = SKColor.red
-                node.fillColor = SKColor.red
             case .photonode:
                 self.name = "photo"
                 node.strokeColor = SKColor.red
@@ -83,23 +76,80 @@ class TouchNode : SKShapeNode {
     }
     
     
-    func addOverlayFeatures(node: SKShapeNode, type:NodeType) {
-  /*
-        switch type {
-            case .photonodetesttext:
-      
-            case .photonode:
-
-            case .textnode:
-
-            case .tablenode:
-        }
- */
+    func addPhoto() {
+        let person = SKSpriteNode(imageNamed: "person.png")
+        person.position = CGPoint(x: self.frame.width/2.0, y: self.frame.height/2.0)
+        person.alpha = 0.8
+        person.isUserInteractionEnabled = false
+        person.zPosition = 10.0
+        self.zPosition = 9.0
+        self.addChild(person)
     }
     
     
-    func buildSpriteOverlay(type:NodeType) {
+    func addText() {
+        let titleNode = SKLabelNode(fontNamed: "Helvetica Neue")
+        titleNode.text = textName
+        titleNode.fontSize = 26.0
+        titleNode.fontColor = SKColor.green
+        titleNode.position = CGPoint(x: self.frame.width/2.0, y:self.frame.height/2.0 )
+        titleNode.isUserInteractionEnabled = false
+        self.zPosition = 200
+        self.addChild(titleNode)
+    }
+    
+    
+    func addTextImage() {
+        let notes = SKSpriteNode(imageNamed: "notes.png")
+        notes.position = CGPoint(x: self.frame.width/2.0, y: self.frame.height/2.0)
+        notes.alpha = 1.0
+        notes.zPosition = 2.0
+        self.zPosition = -5.0
+        self.addChild(notes)
+        
+        let titleNode = SKLabelNode(fontNamed: "Helvetica Neue")
+        titleNode.text = textName
+        titleNode.fontSize = 26.0
+        titleNode.fontColor = SKColor.green
+        titleNode.position = CGPoint(x: self.frame.width/2.0, y:self.frame.height/2.0 )
+        titleNode.isUserInteractionEnabled = false
+        //self.zPosition = 200
+        self.addChild(titleNode)
+    }
+    
+    
+    func addButtonArrow() {
+        let titleNode = SKLabelNode(fontNamed: "Helvetica Neue")
+        titleNode.text = ">"
+        titleNode.fontSize = 26.0
+        titleNode.fontColor = SKColor.darkGray
+        titleNode.position = CGPoint(x: 0.0, y: self.frame.height/2.0)
+        titleNode.isUserInteractionEnabled = false
+        self.zPosition = 50.0
+        self.addChild(titleNode)
+    }
+    
+    
+    func addOverlayFeatures(node: SKShapeNode, type:NodeType) {
+  
+        switch type {
+            case .photonode:
+                addPhoto()
+            case .textnode:
+                addText()
+                addTextImage()
+            case .tablenode:
+                addText()
+                //addButtonArrow()
+        }
+    }
+    
+    
+    func buildSpriteOverlay(type:NodeType, name:String? = nil) {
 
+        if name != nil {
+            textName = name
+        }
         self.isUserInteractionEnabled = true
         
         let rect = CGRect(x:self.frame.origin.x,
@@ -113,7 +163,6 @@ class TouchNode : SKShapeNode {
         
         // SKShapeNode are for appearance, let parent TouchNode respond to touch
         node.isUserInteractionEnabled = false
-        node.position = CGPoint(x: 0.0, y: 0.0)
         
         addOverlayColors(node: node, type:type)
         addOverlayFeatures(node: node, type:type)

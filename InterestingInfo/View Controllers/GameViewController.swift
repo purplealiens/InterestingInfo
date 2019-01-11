@@ -12,6 +12,8 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    var nodeBundleListBuilder: NodeBundleListBuilder?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,13 +34,15 @@ class GameViewController: UIViewController {
                 // Present the scene
                 if let view = self.view as! SKView? {
                     view.presentScene(sceneNode)
-                    view.ignoresSiblingOrder = true
+                    //view.ignoresSiblingOrder = true
                     
-                    let nodeBundleListBuilder = NodeBundleListBuilder()
+                    let aNodeBundleListBuilder = NodeBundleListBuilder(scene:sceneNode)
                     
-                    //nodeBundleListBuilder.getData(strings: [String], images: [UIImage])
-                    nodeBundleListBuilder.getDataTest(toScene:sceneNode)
-                    let nodeBundleListPositioner = NodeBundleListPositioner(bundleList:nodeBundleListBuilder.getNodeBundleList())
+                    nodeBundleListBuilder = aNodeBundleListBuilder
+                    
+                    nodeBundleListBuilder!.processData()
+                    
+                    let nodeBundleListPositioner = NodeBundleListPositioner(bundleList: nodeBundleListBuilder!.getNodeBundleList())
                     nodeBundleListPositioner.positionLinaer()
                     
                     createSpriteNotifications()
@@ -46,22 +50,14 @@ class GameViewController: UIViewController {
             }
         }
     }
-    
 
     
     @objc
     func tableShowTapped(_ notification: Notification) {
         
-        // get info from notification and build dict to pass to tableview
-        // if let shapeInfoNode = notification.object as? ResponderShapeAlertNode {//
-        // popup dialog
-        // performSegue(withIdentifier:"showMeDue", sender:shapeInfoNode)
-        //}
         if let touchInfoNode = notification.object as? TouchNode {
-            // popup dialog
             performSegue(withIdentifier:"infoTableSegue", sender:touchInfoNode)
         }
-        
     }
     
     
@@ -85,17 +81,18 @@ class GameViewController: UIViewController {
     }
     
     // MARK:- Segue actinos
+    
     @IBAction func unwindCancelAction(unwindSegue: UIStoryboardSegue){
         
-        //showHideCompletedControl()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // "segue" source, destination, idetifier
-        // sender, object that initiated the segue,
-        
-
+        if (sender as? TouchNode) != nil {
+            let nVc:UINavigationController = segue.destination as! UINavigationController
+            let vc:InfoTableViewController = nVc.topViewController as! InfoTableViewController
+            vc.tableData = nodeBundleListBuilder!.getNodeBundleListData()
+        }
     }
     
     

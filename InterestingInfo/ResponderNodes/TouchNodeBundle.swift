@@ -28,9 +28,10 @@ class TouchNodeBundle : SKShapeNode{
     }
     
     
-    func positionNodes() {
+    func positionNodes(text: String) {
  
         self.isUserInteractionEnabled = true
+        self.strokeColor = SKColor.clear
         
         let bw = self.frame.width
         let bh = self.frame.height
@@ -52,17 +53,12 @@ class TouchNodeBundle : SKShapeNode{
         let tableButtonTouchNode = TouchNode(rect: rect3, cornerRadius: 5.0)
         
         photoInfoTouchNode.strokeColor = SKColor.red
-        //photoInfoTouchNode.fillColor = SKColor.red
-        
         textInfoTouchNode.strokeColor = SKColor.white
-        //textInfoTouchNode.fillColor = SKColor.white
-        
         tableButtonTouchNode.strokeColor = SKColor.gray
-        //tableButtonTouchNode.fillColor = SKColor.gray
         
-        photoInfoTouchNode.buildSpriteOverlay(type: .photonodetesttext)
-        textInfoTouchNode.buildSpriteOverlay(type: .textnode)
-        tableButtonTouchNode.buildSpriteOverlay(type: .tablenode)
+        photoInfoTouchNode.buildSpriteOverlay(type: .photonode)             // On touch opens "note detail"
+        textInfoTouchNode.buildSpriteOverlay(type: .textnode, name: text)  
+        tableButtonTouchNode.buildSpriteOverlay(type: .tablenode)           // On touch segues to table
         
         self.addChild(textInfoTouchNode)
         self.addChild(photoInfoTouchNode)

@@ -9,9 +9,7 @@
 import UIKit
 
 class DepartmentStaffTabelCell : UITableViewCell {
-//    @IBOutlet weak var personImageView: UIImageView!//
-//    @IBOutlet weak var notesImageView: UIImageView!
-//    @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var personImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,9 +17,11 @@ class DepartmentStaffTabelCell : UITableViewCell {
     
 }
 
-var data:[String] = ["Tim S.", "Chetan R.", "Jan L.", "Dexter H.", "Kim Y."]
-let stringsImages:[String] = ["image 1", "image 2", "image 3", "image 4", "image 5"]
+
+
 class InfoTableViewController: UITableViewController {
+    
+    var tableData = [String]()
     
     // MARK:- Overrides
     
@@ -53,7 +53,7 @@ class InfoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return data.count
+        return tableData.count
         
     }
     
@@ -67,15 +67,7 @@ class InfoTableViewController: UITableViewController {
             cell.accessoryType = .none
         }
         
-       // let object = repeatingArray[indexPath.row]
-        
-       // if(object == mainRepeat){
-       //     cell.accessoryType = .checkmark
-        //}
-        
-        //cell.textLabel!.text = object
-        
-        cell.nameLabel.text = data[indexPath.row]
+        cell.nameLabel.text = tableData[indexPath.row]
         
         return cell
     }
@@ -86,16 +78,11 @@ class InfoTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
+    
     // MARK: - Segues
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        /*
-        let indexPath = self.tableView.indexPathForSelectedRow
-        let selectedRepeat = repeatingArray[(indexPath?.row)!]
-        let adnVC:AddTableViewController = segue.destination as! AddTableViewController
-        mainRepeat = selectedRepeat
-        adnVC.mainRepeatingIndex = (indexPath?.row)!
- */
+   
     }
 }

@@ -33,9 +33,9 @@ class NodeBundleListPositioner {
     
     
     func positionLinaer() {
-        var yshift = -480.0
+        var yshift = -600.0
         for item in touchNodeBundleList! {
-            let x = -205.0
+            let x = -170.0
             let y = yshift
             yshift += 200.0
             item.position = CGPoint(x: x, y: y)
